@@ -1,9 +1,6 @@
 package id.ac.ui.pusilkom.odontogram.shape;
 
 import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
-import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
-import id.ac.ui.pusilkom.odontogram.enums.GerahamPart;
-import id.ac.ui.pusilkom.odontogram.helper.ShapeHelper;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
