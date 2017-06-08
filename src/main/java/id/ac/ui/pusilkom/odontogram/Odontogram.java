@@ -26,7 +26,7 @@ public class Odontogram {
     private static int START_Y = 0;
 
     private static int WILLBECALCULATEDLATER_X = -1; // setelah semua state gigi sudah di-set, pada tahap akan dirender,
-    private static int WILLBECALCULATEDLATER_Y = -1; // semua gigi akan di-set ulang posisi x & y-nya dgn method recalculatePositionOfAllGigi
+    private static int WILLBECALCULATEDLATER_Y = -1; // semua gigi akan di-set ulang posisi x & y-nya dgn method recalculatePositionOfAllTooth
 
     Map<Integer, Tooth> container;
 
@@ -61,7 +61,7 @@ public class Odontogram {
     public BufferedImage generateBufferedImage() {
         List<Layer> listAllLayer = this.recalculateThenGetAllLayer(listToothRow1, listToothRow2, listToothRow3, listToothRow4);
 
-        BufferedImage canvas = new BufferedImage(START_X + this.totalWidthOfListGigi(listToothRow1), START_Y + this.totalHeightOfCanvas(listToothRow1, listToothRow2, listToothRow3, listToothRow4), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage canvas = new BufferedImage(START_X + this.totalWidthOfListTooth(listToothRow1), START_Y + this.totalHeightOfCanvas(listToothRow1, listToothRow2, listToothRow3, listToothRow4), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = canvas.createGraphics();
 
         g.setStroke(StrokeStyle.BASIC);
@@ -223,13 +223,13 @@ public class Odontogram {
     }
 
 //    RECALCULATE position or size of everything (gigi,box,layer)
-    private List<Layer> recalculateThenGetAllLayer(List<Tooth>... listOfListGigi)  {
+    private List<Layer> recalculateThenGetAllLayer(List<Tooth>... listOfListTooth)  {
 
         List<Layer> listAllLayer = new ArrayList<Layer>();
 
-        this.recalculatePositionOfAllGigi(listOfListGigi);
+        this.recalculatePositionOfAllTooth(listOfListTooth);
 
-        for (List<Tooth> listTooth : listOfListGigi) {
+        for (List<Tooth> listTooth : listOfListTooth) {
 
             this.appendWithEmptyIfGapped(listTooth);
 
@@ -245,35 +245,35 @@ public class Odontogram {
     }
 
     // === TAMBAHAN : recalculate x & y semua gigi
-    private void recalculatePositionOfAllGigi(List<Tooth>... listOfListGigi) {
+    private void recalculatePositionOfAllTooth(List<Tooth>... listOfListTooth) {
 
         List<Tooth> prevListTooth = null;
-        int xAmongListGigi = 0;
-        int yAmongListGigi = 0;
+        int xAmongListTooth = 0;
+        int yAmongListTooth = 0;
 
-        for (List<Tooth> listTooth : listOfListGigi) {
+        for (List<Tooth> listTooth : listOfListTooth) {
 
             if (prevListTooth == null) {
-                xAmongListGigi = START_X;
-                yAmongListGigi = START_Y;
+                xAmongListTooth = START_X;
+                yAmongListTooth = START_Y;
             } else {
-                yAmongListGigi += this.determineMaxTotalHeightOfListGigi(prevListTooth);
+                yAmongListTooth += this.determineMaxTotalHeightOfListTooth(prevListTooth);
             }
 
             Tooth prevTooth = null;
-            int xAmongGigi = 0;
-            int yAmongGigi = 0;
+            int xAmongTooth = 0;
+            int yAmongTooth = 0;
 
             for (Tooth tooth : listTooth) {
                 if (prevTooth == null) {
-                    xAmongGigi = xAmongListGigi;
-                    yAmongGigi = yAmongListGigi;
+                    xAmongTooth = xAmongListTooth;
+                    yAmongTooth = yAmongListTooth;
                 } else {
-                    xAmongGigi += prevTooth.getWidth();
+                    xAmongTooth += prevTooth.getWidth();
                 }
 
-                tooth.setX(xAmongGigi);
-                tooth.setY(yAmongGigi);
+                tooth.setX(xAmongTooth);
+                tooth.setY(yAmongTooth);
 
                 prevTooth = tooth;
             }
@@ -314,7 +314,7 @@ public class Odontogram {
 
     }
 
-    private int totalWidthOfListGigi(List<Tooth> listTooth) {
+    private int totalWidthOfListTooth(List<Tooth> listTooth) {
         int totalWidth = 0;
         for (Tooth tooth : listTooth) {
             totalWidth += tooth.getWidth();
@@ -322,7 +322,7 @@ public class Odontogram {
         return totalWidth;
     }
 
-    private int determineMaxTotalHeightOfListGigi(List<Tooth> listTooth) {
+    private int determineMaxTotalHeightOfListTooth(List<Tooth> listTooth) {
         int maxTotalHeight = 0;
         for (Tooth tooth : listTooth) {
             int totalHeight = tooth.totalHeight();
@@ -331,16 +331,16 @@ public class Odontogram {
         return maxTotalHeight;
     }
 
-    private int totalHeightOfCanvas(List<Tooth>... listOfListGigi) {
+    private int totalHeightOfCanvas(List<Tooth>... listOfListTooth) {
         int totalHeight = 0;
-        for (List<Tooth> listTooth : listOfListGigi) {
-            totalHeight += this.determineMaxTotalHeightOfListGigi(listTooth);
+        for (List<Tooth> listTooth : listOfListTooth) {
+            totalHeight += this.determineMaxTotalHeightOfListTooth(listTooth);
         }
         return totalHeight;
     }
 
-    public Tooth getGigi(int nomorGigi) {
-        return container.get(nomorGigi);
+    public Tooth getTooth(int noTooth) {
+        return container.get(noTooth);
     }
 
 }
