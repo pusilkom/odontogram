@@ -1,4 +1,4 @@
-package com.pusilkom.rsgmui.odontogram.constant;
+package id.ac.ui.pusilkom.odontogram.constant;
 
 /**
  * Created by fahri on 4/24/17.

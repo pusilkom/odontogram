@@ -1,8 +1,9 @@
-package com.pusilkom.rsgmui.odontogram.shape;
+package id.ac.ui.pusilkom.odontogram.shape;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.constant.PaintStyle;
-import com.pusilkom.rsgmui.odontogram.constant.StrokeStyle;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.constant.PaintStyle;
+import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
+import id.ac.ui.pusilkom.odontogram.enums.ArrowDirection;
 
 import java.awt.*;
 import java.awt.geom.*;
@@ -11,10 +12,10 @@ import java.awt.geom.*;
  * Created by fahri on 4/24/17.
  */
 public class Arrow extends Layer {
-    String orient = "RIGHT";
+    ArrowDirection direction;
     Stroke stroke;
-    public void with(String orient, Stroke stroke){
-        this.orient = orient;
+    public void with(ArrowDirection direction, Stroke stroke){
+        this.direction = direction;
         this.stroke = stroke;
     }
     public void draw() {
@@ -24,7 +25,7 @@ public class Arrow extends Layer {
         g2.setColor(Color.BLACK);
         g2.setPaint(PaintStyle.SOLID_BLACK);
         GeneralPath path = new GeneralPath();
-        if(orient.equalsIgnoreCase("RIGHT")) {
+        if(direction == ArrowDirection.RIGHT) {
             int newWidth = this.getWidth()*4/5;
 
             path.moveTo (this.getX() +(this.getWidth()/5), this.getY() + this.getHeight()/2);
@@ -35,7 +36,7 @@ public class Arrow extends Layer {
             path.lineTo (this.getX() +(this.getWidth()/5) + (newWidth*4/5), this.getY()+this.getHeight()/2);
             path.lineTo (this.getX() +(this.getWidth()/5) + (newWidth*3/5), (this.getY()+this.getHeight()/4));
             path.lineTo (this.getX() +(this.getWidth()/5) + (newWidth*3/5), this.getY()+this.getHeight()/2);
-        } else if(orient.equalsIgnoreCase("LEFT")) {
+        } else if(direction == ArrowDirection.LEFT) {
             int newWidth = this.getWidth()*4/5;
             path.moveTo (this.getX() +(this.getWidth()/5 + newWidth), this.getY() + this.getHeight()/2);
             path.lineTo (this.getX() +(this.getWidth()*2/5), (this.getY()+this.getHeight()*2/4));
@@ -45,7 +46,7 @@ public class Arrow extends Layer {
             path.lineTo (this.getX() +(this.getWidth()/5), (this.getY()+this.getHeight()*2/4));
             path.lineTo (this.getX() +(this.getWidth()*2/5), (this.getY()+this.getHeight()*1/4));
             path.lineTo (this.getX() +(this.getWidth()*2/5), (this.getY()+this.getHeight()*2/4));
-        } else if(orient.equalsIgnoreCase("UP")) {
+        } else if(direction == ArrowDirection.UP) {
             path.moveTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight());
             path.lineTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight()*2/5);
             g2.setStroke(this.stroke);
@@ -54,7 +55,7 @@ public class Arrow extends Layer {
             path.lineTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight()*1/5);
             path.lineTo(this.getX() + this.getWidth()*3/4, this.getY() + this.getHeight()*2/5);
             path.lineTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight()*2/5);
-        } else if(orient.equalsIgnoreCase("DOWN")) {
+        } else if(direction == ArrowDirection.DOWN) {
             path.moveTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight()*1/5);
             path.lineTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight()*4/5);
             g2.setStroke(this.stroke);
@@ -63,7 +64,7 @@ public class Arrow extends Layer {
             path.lineTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight());
             path.lineTo(this.getX() + this.getWidth()*3/4, this.getY() + this.getHeight()*4/5);
             path.lineTo(this.getX() + this.getWidth()/2, this.getY() + this.getHeight()*4/5);
-        } else if(orient.equalsIgnoreCase("CLOCKWISE")) {
+        } else if(direction == ArrowDirection.CLOCKWISE) {
             QuadCurve2D q = new QuadCurve2D.Double();
             q.setCurve(this.getX()+this.getWidth()/2, (double)(this.getY()+this.getHeight()), this.getX()+this.getWidth()/10, (this.getY()+this.getHeight()/2), this.getX()+this.getWidth()/2, this.getY()+this.getHeight()/5);
             //path.moveTo(this.getX()+this.getWidth()*7.5/10, this.getY()+this.getHeight()/2);
@@ -77,7 +78,7 @@ public class Arrow extends Layer {
             path.lineTo(this.getX()+this.getWidth()/2, this.getY()+this.getHeight()/3);
             path.moveTo(this.getX()+this.getWidth()/2, this.getY()+this.getHeight()/5);
             g2.draw(path);
-        } else if(orient.equalsIgnoreCase("COUNTERCLOCKWISE")) {
+        } else if(direction == ArrowDirection.COUNTER_CLOCKWISE) {
             QuadCurve2D q = new QuadCurve2D.Double();
             q.setCurve(this.getX()+this.getWidth()/2, (double)(this.getY()+this.getHeight()), this.getX()+this.getWidth()/10, (this.getY()+this.getHeight()/2), this.getX()+this.getWidth()/2, this.getY()+this.getHeight()/5);
             //path.moveTo(this.getX()+this.getWidth()*7.5/10, this.getY()+this.getHeight()/2);

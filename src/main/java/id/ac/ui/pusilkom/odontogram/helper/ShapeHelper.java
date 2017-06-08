@@ -1,7 +1,7 @@
-package com.pusilkom.rsgmui.odontogram.helper;
+package id.ac.ui.pusilkom.odontogram.helper;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.enums.*;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.enums.*;
 
 import java.awt.geom.GeneralPath;
 
@@ -9,7 +9,7 @@ import java.awt.geom.GeneralPath;
  * Created by fahri on 4/24/17.
  */
 public class ShapeHelper {
-    public static GeneralPath Graham(Layer l, GerahamPart graham) {
+    public static GeneralPath Graham(Layer l, MolarPart graham) {
         double w_1per4 = l.getWidth()/4;
         double h_1per4 = l.getHeight()/4;
         double w_1per2 = l.getWidth()/2;
@@ -17,31 +17,31 @@ public class ShapeHelper {
 
         GeneralPath shape = new GeneralPath();
 
-        if (graham == GerahamPart.CENTER) {
+        if (graham == MolarPart.CENTER) {
             shape.moveTo(l.getX() + w_1per4, l.getY() + h_1per4);
             shape.lineTo(l.getX() + w_1per4 + w_1per2, l.getY() + h_1per4);
             shape.lineTo(l.getX() + w_1per4 + w_1per2, l.getY() + h_1per4 + h_1per2);
             shape.lineTo(l.getX() + w_1per4, l.getY() + h_1per4 + h_1per2);
             shape.closePath();
-        } else if (graham == GerahamPart.TOP) {
+        } else if (graham == MolarPart.TOP) {
             shape.moveTo(l.getX(), l.getY());
             shape.lineTo(l.getX() + w_1per4, l.getY() + h_1per4);
             shape.lineTo(l.getXWidth() - w_1per4, l.getY() + h_1per4);
             shape.lineTo(l.getXWidth(), l.getY());
             shape.closePath();
-        } else if (graham == GerahamPart.BOTTOM) {
+        } else if (graham == MolarPart.BOTTOM) {
             shape.moveTo(l.getX(), l.getYHeight());
             shape.lineTo(l.getX() + w_1per4, l.getYHeight() - h_1per4);
             shape.lineTo(l.getXWidth() - w_1per4, l.getYHeight() - h_1per4);
             shape.lineTo(l.getXWidth(), l.getYHeight());
             shape.closePath();
-        } else if (graham == GerahamPart.LEFT) {
+        } else if (graham == MolarPart.LEFT) {
             shape.moveTo(l.getX(), l.getY());
             shape.lineTo(l.getX() + w_1per4, l.getY() + h_1per4);
             shape.lineTo(l.getX() + w_1per4, l.getYHeight() - h_1per4);
             shape.lineTo(l.getX(), l.getYHeight());
             shape.closePath();
-        } else if (graham == GerahamPart.RIGHT) {
+        } else if (graham == MolarPart.RIGHT) {
             shape.moveTo(l.getXWidth(), l.getY());
             shape.lineTo(l.getXWidth() - w_1per4, l.getY() + h_1per4);
             shape.lineTo(l.getXWidth() - w_1per4, l.getYHeight() - h_1per4);
@@ -52,7 +52,7 @@ public class ShapeHelper {
         return shape;
     }
 
-    public static GeneralPath Taring(Layer l, NonGerahamPart nonGerahamPart) {
+    public static GeneralPath Taring(Layer l, NonMolarPart nonMolarPart) {
         double w_1per4 = l.getWidth()/4;
         double h_1per4 = l.getHeight()/4;
         double w_1per2 = l.getWidth()/2;
@@ -60,24 +60,24 @@ public class ShapeHelper {
 
         GeneralPath shape = new GeneralPath();
 
-        if (nonGerahamPart == NonGerahamPart.TOP) {
+        if (nonMolarPart == NonMolarPart.TOP) {
             shape.moveTo(l.getX(), l.getY());
             shape.lineTo(l.getX() + w_1per4, l.getY() + h_1per2);
             shape.lineTo(l.getXWidth() - w_1per4, l.getY() + h_1per2);
             shape.lineTo(l.getXWidth(), l.getY());
             shape.closePath();
-        } else if (nonGerahamPart == NonGerahamPart.BOTTOM) {
+        } else if (nonMolarPart == NonMolarPart.BOTTOM) {
             shape.moveTo(l.getX(), l.getYHeight());
             shape.lineTo(l.getX() + w_1per4, l.getY() + h_1per2);
             shape.lineTo(l.getXWidth() - w_1per4, l.getY() + h_1per2);
             shape.lineTo(l.getXWidth(), l.getYHeight());
             shape.closePath();
-        } else if (nonGerahamPart == NonGerahamPart.LEFT) {
+        } else if (nonMolarPart == NonMolarPart.LEFT) {
             shape.moveTo(l.getX(), l.getY());
             shape.lineTo(l.getX() + w_1per4, l.getY() + h_1per2);
             shape.lineTo(l.getX(), l.getYHeight());
             shape.closePath();
-        } else if (nonGerahamPart == NonGerahamPart.RIGHT) {
+        } else if (nonMolarPart == NonMolarPart.RIGHT) {
             shape.moveTo(l.getXWidth(), l.getY());
             shape.lineTo(l.getXWidth() - w_1per4, l.getY() + h_1per2);
             shape.lineTo(l.getXWidth(), l.getYHeight());

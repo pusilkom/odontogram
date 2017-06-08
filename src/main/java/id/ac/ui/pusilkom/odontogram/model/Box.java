@@ -1,10 +1,8 @@
-package com.pusilkom.rsgmui.odontogram.model;
+package id.ac.ui.pusilkom.odontogram.model;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.google.common.collect.Lists;
-import net.sf.jasperreports.engine.util.JRStyledText;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
 
-import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,7 +14,7 @@ public class Box {
     private int width;
     private int height;
 
-    private List<Layer> listLayer = Lists.newArrayList();
+    private List<Layer> listLayer = new ArrayList<Layer>();
 
     public Box(int x, int y, int width, int height) {
         this.x = x;

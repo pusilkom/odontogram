@@ -1,9 +1,9 @@
-package com.pusilkom.rsgmui.odontogram.shape;
+package id.ac.ui.pusilkom.odontogram.shape;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.constant.StrokeStyle;
-import com.pusilkom.rsgmui.odontogram.enums.HLinePart;
-import com.pusilkom.rsgmui.odontogram.enums.VLinePart;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
+import id.ac.ui.pusilkom.odontogram.enums.HLinePart;
+import id.ac.ui.pusilkom.odontogram.enums.VLinePart;
 
 import java.awt.*;
 import java.awt.geom.Line2D;

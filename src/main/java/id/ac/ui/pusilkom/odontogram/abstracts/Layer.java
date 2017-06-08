@@ -1,4 +1,4 @@
-package com.pusilkom.rsgmui.odontogram.abstracts;
+package id.ac.ui.pusilkom.odontogram.abstracts;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
