@@ -1,7 +1,7 @@
-package com.pusilkom.rsgmui.odontogram.shape;
+package id.ac.ui.pusilkom.odontogram.shape;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.constant.StrokeStyle;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
 
 import java.awt.*;
 

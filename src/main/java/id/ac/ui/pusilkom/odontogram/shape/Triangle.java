@@ -1,8 +1,8 @@
-package com.pusilkom.rsgmui.odontogram.shape;
+package id.ac.ui.pusilkom.odontogram.shape;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.enums.TriangleDirection;
-import com.pusilkom.rsgmui.odontogram.helper.ShapeHelper;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.enums.TriangleDirection;
+import id.ac.ui.pusilkom.odontogram.helper.ShapeHelper;
 
 import java.awt.*;
 

@@ -1,23 +1,19 @@
-package com.pusilkom.rsgmui.odontogram;
+package id.ac.ui.pusilkom.odontogram;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.constant.PaintStyle;
-import com.pusilkom.rsgmui.odontogram.constant.Size;
-import com.pusilkom.rsgmui.odontogram.constant.StrokeStyle;
-import com.pusilkom.rsgmui.odontogram.enums.*;
-import com.pusilkom.rsgmui.odontogram.model.Box;
-import com.pusilkom.rsgmui.odontogram.model.Gigi;
-import com.pusilkom.rsgmui.odontogram.shape.*;
-import com.pusilkom.rsgmui.odontogram.shape.Label;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.constant.PaintStyle;
+import id.ac.ui.pusilkom.odontogram.constant.Size;
+import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
+import id.ac.ui.pusilkom.odontogram.enums.*;
+import id.ac.ui.pusilkom.odontogram.model.Box;
+import id.ac.ui.pusilkom.odontogram.model.Gigi;
+import id.ac.ui.pusilkom.odontogram.shape.*;
+import id.ac.ui.pusilkom.odontogram.shape.Label;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -45,7 +41,7 @@ public class Odontogram {
         listGigiRow3 = this.initRow3();
         listGigiRow4 = this.initRow4();
 
-        container = Maps.newHashMap();
+        container = new HashMap<Integer, Gigi>();
 
         for (Gigi gigi : listGigiRow1) {
             container.put(gigi.getNo(), gigi);
@@ -79,7 +75,7 @@ public class Odontogram {
     }
 
     private List<Gigi> initRow1() {
-        List<Gigi> listGigiRow = Lists.newArrayList();
+        List<Gigi> listGigiRow = new ArrayList<Gigi>();
 
         for (int no = 18; no >= 11; no--) {
             Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
@@ -111,7 +107,7 @@ public class Odontogram {
     }
 
     private List<Gigi> initRow2()  {
-        List<Gigi> listGigiRow = Lists.newArrayList();
+        List<Gigi> listGigiRow = new ArrayList<Gigi>();
 
         for (int no = 58; no >= 56; no--) {
             Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
@@ -153,7 +149,7 @@ public class Odontogram {
     }
 
     private List<Gigi> initRow3()  {
-        List<Gigi> listGigiRow = Lists.newArrayList();
+        List<Gigi> listGigiRow = new ArrayList<Gigi>();
 
         for (int no = 88; no >= 86; no--) {
             Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
@@ -197,7 +193,7 @@ public class Odontogram {
     }
 
     private List<Gigi> initRow4()  {
-        List<Gigi> listGigiRow = Lists.newArrayList();
+        List<Gigi> listGigiRow = new ArrayList<Gigi>();
 
         for (int no = 48; no >= 41; no--) {
             Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
@@ -229,7 +225,7 @@ public class Odontogram {
 //    RECALCULATE position or size of everything (gigi,box,layer)
     private List<Layer> recalculateThenGetAllLayer(List<Gigi>... listOfListGigi)  {
 
-        List<Layer> listAllLayer = Lists.newArrayList();
+        List<Layer> listAllLayer = new ArrayList<Layer>();
 
         this.recalculatePositionOfAllGigi(listOfListGigi);
 

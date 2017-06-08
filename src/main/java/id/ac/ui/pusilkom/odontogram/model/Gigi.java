@@ -1,9 +1,9 @@
-package com.pusilkom.rsgmui.odontogram.model;
+package id.ac.ui.pusilkom.odontogram.model;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.constant.Size;
-import com.google.common.collect.Lists;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.constant.Size;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,9 +16,9 @@ public class Gigi {
     private int y;
     private int width = Size.BOX_WIDTH;
 
-    private List<Box> listBoxTop = Lists.newArrayList();
+    private List<Box> listBoxTop = new ArrayList<Box>();
     private Box boxCenter;
-    private List<Box> listBoxBottom = Lists.newArrayList();
+    private List<Box> listBoxBottom = new ArrayList<Box>();
 
     public Box getBoxCenter() {
         return this.boxCenter;
@@ -233,7 +233,7 @@ public class Gigi {
     // GET ALL DRAWABLE LAYER
 
     public List<Layer> getAllDrawableLayer() {
-        List<Layer> allLayer = Lists.newArrayList();
+        List<Layer> allLayer = new ArrayList<Layer>();
 
         for (Box box : listBoxTop) {
             allLayer.addAll(box.getListLayer());

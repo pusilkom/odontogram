@@ -1,4 +1,4 @@
-package com.pusilkom.rsgmui.odontogram.enums;
+package id.ac.ui.pusilkom.odontogram.enums;
 
 /**
  * Created by fahri on 4/24/17.

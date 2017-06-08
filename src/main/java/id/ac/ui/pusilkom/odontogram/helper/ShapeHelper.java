@@ -1,7 +1,7 @@
-package com.pusilkom.rsgmui.odontogram.helper;
+package id.ac.ui.pusilkom.odontogram.helper;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.enums.*;
+import id.ac.ui.pusilkom.odontogram.abstracts.Layer;
+import id.ac.ui.pusilkom.odontogram.enums.*;
 
 import java.awt.geom.GeneralPath;
 

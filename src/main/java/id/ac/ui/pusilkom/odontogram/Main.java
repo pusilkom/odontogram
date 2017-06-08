@@ -1,25 +1,20 @@
-package com.pusilkom.rsgmui.odontogram;
+package id.ac.ui.pusilkom.odontogram;
 
-import com.pusilkom.rsgmui.odontogram.abstracts.Layer;
-import com.pusilkom.rsgmui.odontogram.constant.PaintStyle;
-import com.pusilkom.rsgmui.odontogram.constant.Size;
-import com.pusilkom.rsgmui.odontogram.constant.StrokeStyle;
-import com.pusilkom.rsgmui.odontogram.enums.*;
-import com.pusilkom.rsgmui.odontogram.model.Box;
-import com.pusilkom.rsgmui.odontogram.model.Gigi;
-import com.pusilkom.rsgmui.odontogram.shape.*;
-import com.pusilkom.rsgmui.odontogram.shape.Label;
-import com.pusilkom.rsgmui.odontogram.shape.Rectangle;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import id.ac.ui.pusilkom.odontogram.constant.PaintStyle;
+import id.ac.ui.pusilkom.odontogram.constant.Size;
+import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
+import id.ac.ui.pusilkom.odontogram.enums.*;
+import id.ac.ui.pusilkom.odontogram.model.Box;
+import id.ac.ui.pusilkom.odontogram.model.Gigi;
+import id.ac.ui.pusilkom.odontogram.shape.*;
+import id.ac.ui.pusilkom.odontogram.shape.Label;
+import id.ac.ui.pusilkom.odontogram.shape.Rectangle;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by fahri on 4/24/17.
