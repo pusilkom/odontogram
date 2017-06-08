@@ -1,5 +1,6 @@
-package id.ac.ui.pusilkom.odontogram;
+package id.ac.ui.pusilkom;
 
+import id.ac.ui.pusilkom.odontogram.Odontogram;
 import id.ac.ui.pusilkom.odontogram.constant.PaintStyle;
 import id.ac.ui.pusilkom.odontogram.constant.Size;
 import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
@@ -19,13 +20,13 @@ import java.io.IOException;
 /**
  * Created by fahri on 4/24/17.
  */
-public class Main {
+public class Example {
 
     public static void main(String[] args)  {
-        new Main();
+        new Example();
     }
 
-    Main()  {
+    Example()  {
         Odontogram odontogram = new Odontogram();
 
         Gigi g18 = odontogram.getGigi(18);
