@@ -6,7 +6,7 @@ import id.ac.ui.pusilkom.odontogram.constant.Size;
 import id.ac.ui.pusilkom.odontogram.constant.StrokeStyle;
 import id.ac.ui.pusilkom.odontogram.enums.*;
 import id.ac.ui.pusilkom.odontogram.model.Box;
-import id.ac.ui.pusilkom.odontogram.model.Gigi;
+import id.ac.ui.pusilkom.odontogram.model.Tooth;
 import id.ac.ui.pusilkom.odontogram.shape.*;
 import id.ac.ui.pusilkom.odontogram.shape.Label;
 
@@ -28,40 +28,40 @@ public class Odontogram {
     private static int WILLBECALCULATEDLATER_X = -1; // setelah semua state gigi sudah di-set, pada tahap akan dirender,
     private static int WILLBECALCULATEDLATER_Y = -1; // semua gigi akan di-set ulang posisi x & y-nya dgn method recalculatePositionOfAllGigi
 
-    Map<Integer, Gigi> container;
+    Map<Integer, Tooth> container;
 
-    List<Gigi> listGigiRow1;
-    List<Gigi> listGigiRow2;
-    List<Gigi> listGigiRow3;
-    List<Gigi> listGigiRow4;
+    List<Tooth> listToothRow1;
+    List<Tooth> listToothRow2;
+    List<Tooth> listToothRow3;
+    List<Tooth> listToothRow4;
 
     public Odontogram() {
-        listGigiRow1 = this.initRow1();
-        listGigiRow2 = this.initRow2();
-        listGigiRow3 = this.initRow3();
-        listGigiRow4 = this.initRow4();
+        listToothRow1 = this.initRow1();
+        listToothRow2 = this.initRow2();
+        listToothRow3 = this.initRow3();
+        listToothRow4 = this.initRow4();
 
-        container = new HashMap<Integer, Gigi>();
+        container = new HashMap<Integer, Tooth>();
 
-        for (Gigi gigi : listGigiRow1) {
-            container.put(gigi.getNo(), gigi);
+        for (Tooth tooth : listToothRow1) {
+            container.put(tooth.getNo(), tooth);
         }
-        for (Gigi gigi : listGigiRow2) {
-            container.put(gigi.getNo(), gigi);
+        for (Tooth tooth : listToothRow2) {
+            container.put(tooth.getNo(), tooth);
         }
-        for (Gigi gigi : listGigiRow3) {
-            container.put(gigi.getNo(), gigi);
+        for (Tooth tooth : listToothRow3) {
+            container.put(tooth.getNo(), tooth);
         }
-        for (Gigi gigi : listGigiRow4) {
-            container.put(gigi.getNo(), gigi);
+        for (Tooth tooth : listToothRow4) {
+            container.put(tooth.getNo(), tooth);
         }
     }
 
     //      DRAW to canvas/image. Or to outputstream if you want to download it in web controller
     public BufferedImage generateBufferedImage() {
-        List<Layer> listAllLayer = this.recalculateThenGetAllLayer(listGigiRow1, listGigiRow2, listGigiRow3, listGigiRow4);
+        List<Layer> listAllLayer = this.recalculateThenGetAllLayer(listToothRow1, listToothRow2, listToothRow3, listToothRow4);
 
-        BufferedImage canvas = new BufferedImage(START_X + this.totalWidthOfListGigi(listGigiRow1), START_Y + this.totalHeightOfCanvas(listGigiRow1, listGigiRow2, listGigiRow3, listGigiRow4), BufferedImage.TYPE_INT_ARGB);
+        BufferedImage canvas = new BufferedImage(START_X + this.totalWidthOfListGigi(listToothRow1), START_Y + this.totalHeightOfCanvas(listToothRow1, listToothRow2, listToothRow3, listToothRow4), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g = canvas.createGraphics();
 
         g.setStroke(StrokeStyle.BASIC);
@@ -74,53 +74,53 @@ public class Odontogram {
         return canvas;
     }
 
-    private List<Gigi> initRow1() {
-        List<Gigi> listGigiRow = new ArrayList<Gigi>();
+    private List<Tooth> initRow1() {
+        List<Tooth> listToothRow = new ArrayList<Tooth>();
 
         for (int no = 18; no >= 11; no--) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            Box boxTop = gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            Box boxTop = tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
             boxTop.buildThenAddLayer(Label.class).with(String.valueOf(no));
             if (no == 11) {
                 boxTop.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_RIGHT, TriangleSmallDirection.DOWN, PaintStyle.SOLID_BLACK);
             }
 
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
         }
 
         for (int no = 21; no <= 28; no++) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            Box boxTop = gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            Box boxTop = tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
             boxTop.buildThenAddLayer(Label.class).with(String.valueOf(no));
             if (no == 21) {
                 boxTop.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_LEFT, TriangleSmallDirection.DOWN, PaintStyle.SOLID_BLACK);
             }
 
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
         }
 
-        return listGigiRow;
+        return listToothRow;
     }
 
-    private List<Gigi> initRow2()  {
-        List<Gigi> listGigiRow = new ArrayList<Gigi>();
+    private List<Tooth> initRow2()  {
+        List<Tooth> listToothRow = new ArrayList<Tooth>();
 
         for (int no = 58; no >= 56; no--) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
         }
 
         for (int no = 55; no >= 51; no--) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            Box boxBottom = gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Box boxBottom = tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
             boxBottom.buildThenAddLayer(Empty.class);
             if (no == 51) {
                 boxBottom.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_RIGHT, TriangleSmallDirection.UP, PaintStyle.SOLID_BLACK);
@@ -128,11 +128,11 @@ public class Odontogram {
         }
 
         for (int no = 61; no <= 65; no++) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            Box boxBottom = gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Box boxBottom = tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
             boxBottom.buildThenAddLayer(Empty.class);
             if (no == 61) {
                 boxBottom.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_LEFT, TriangleSmallDirection.UP, PaintStyle.SOLID_BLACK);
@@ -140,67 +140,67 @@ public class Odontogram {
         }
 
         for (int no = 66; no <= 68; no++) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
         }
 
-        return listGigiRow;
+        return listToothRow;
     }
 
-    private List<Gigi> initRow3()  {
-        List<Gigi> listGigiRow = new ArrayList<Gigi>();
+    private List<Tooth> initRow3()  {
+        List<Tooth> listToothRow = new ArrayList<Tooth>();
 
         for (int no = 88; no >= 86; no--) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
         }
 
         for (int no = 85; no >= 81; no--) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            Box boxTop = gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            Box boxTop = tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
             boxTop.buildThenAddLayer(Empty.class);
             if (no == 81) {
                 boxTop.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_RIGHT, TriangleSmallDirection.DOWN, PaintStyle.SOLID_BLACK);
             }
 
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
         }
 
         for (int no = 71; no <= 75; no++) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            Box boxTop = gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            Box boxTop = tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT);
             boxTop.buildThenAddLayer(Empty.class);
             if (no == 71) {
                 boxTop.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_LEFT, TriangleSmallDirection.DOWN, PaintStyle.SOLID_BLACK);
             }
 
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Label.class).with(String.valueOf(no));
         }
 
         for (int no = 76; no <= 78; no++) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
         }
 
-        return listGigiRow;
+        return listToothRow;
     }
 
-    private List<Gigi> initRow4()  {
-        List<Gigi> listGigiRow = new ArrayList<Gigi>();
+    private List<Tooth> initRow4()  {
+        List<Tooth> listToothRow = new ArrayList<Tooth>();
 
         for (int no = 48; no >= 41; no--) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            Box boxBottom = gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Box boxBottom = tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
             boxBottom.buildThenAddLayer(Label.class).with(String.valueOf(no));
             if (no == 41) {
                 boxBottom.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_RIGHT, TriangleSmallDirection.UP, PaintStyle.SOLID_BLACK);
@@ -208,36 +208,36 @@ public class Odontogram {
         }
 
         for (int no = 31; no <= 38; no++) {
-            Gigi gigi = new Gigi(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
-            listGigiRow.add(gigi);
-            gigi.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            gigi.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
-            Box boxBottom = gigi.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
+            Tooth tooth = new Tooth(no, WILLBECALCULATEDLATER_X, WILLBECALCULATEDLATER_Y);
+            listToothRow.add(tooth);
+            tooth.buildThenAddBoxForTop(Size.HALF_BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            tooth.buildThenSetBoxForCenter(Size.BOX_HEIGHT).buildThenAddLayer(Empty.class);
+            Box boxBottom = tooth.buildThenAddBoxForBottom(Size.HALF_BOX_HEIGHT);
             boxBottom.buildThenAddLayer(Label.class).with(String.valueOf(no));
             if (no == 31) {
                 boxBottom.buildThenAddLayer(TriangleSmall.class).with(TriangleSmallPart.HALF_LEFT, TriangleSmallDirection.UP, PaintStyle.SOLID_BLACK);
             }
         }
 
-        return listGigiRow;
+        return listToothRow;
     }
 
 //    RECALCULATE position or size of everything (gigi,box,layer)
-    private List<Layer> recalculateThenGetAllLayer(List<Gigi>... listOfListGigi)  {
+    private List<Layer> recalculateThenGetAllLayer(List<Tooth>... listOfListGigi)  {
 
         List<Layer> listAllLayer = new ArrayList<Layer>();
 
         this.recalculatePositionOfAllGigi(listOfListGigi);
 
-        for (List<Gigi> listGigi : listOfListGigi) {
+        for (List<Tooth> listTooth : listOfListGigi) {
 
-            this.appendWithEmptyIfGapped(listGigi);
+            this.appendWithEmptyIfGapped(listTooth);
 
-            for (Gigi gigi : listGigi) {
-                gigi.recalculatePositionAndSizeOfListBox();
-                gigi.drawAllDrawableLayer();
+            for (Tooth tooth : listTooth) {
+                tooth.recalculatePositionAndSizeOfListBox();
+                tooth.drawAllDrawableLayer();
 
-                listAllLayer.addAll(gigi.getAllDrawableLayer());
+                listAllLayer.addAll(tooth.getAllDrawableLayer());
             }
         }
 
@@ -245,101 +245,101 @@ public class Odontogram {
     }
 
     // === TAMBAHAN : recalculate x & y semua gigi
-    private void recalculatePositionOfAllGigi(List<Gigi>... listOfListGigi) {
+    private void recalculatePositionOfAllGigi(List<Tooth>... listOfListGigi) {
 
-        List<Gigi> prevListGigi = null;
+        List<Tooth> prevListTooth = null;
         int xAmongListGigi = 0;
         int yAmongListGigi = 0;
 
-        for (List<Gigi> listGigi : listOfListGigi) {
+        for (List<Tooth> listTooth : listOfListGigi) {
 
-            if (prevListGigi == null) {
+            if (prevListTooth == null) {
                 xAmongListGigi = START_X;
                 yAmongListGigi = START_Y;
             } else {
-                yAmongListGigi += this.determineMaxTotalHeightOfListGigi(prevListGigi);
+                yAmongListGigi += this.determineMaxTotalHeightOfListGigi(prevListTooth);
             }
 
-            Gigi prevGigi = null;
+            Tooth prevTooth = null;
             int xAmongGigi = 0;
             int yAmongGigi = 0;
 
-            for (Gigi gigi : listGigi) {
-                if (prevGigi == null) {
+            for (Tooth tooth : listTooth) {
+                if (prevTooth == null) {
                     xAmongGigi = xAmongListGigi;
                     yAmongGigi = yAmongListGigi;
                 } else {
-                    xAmongGigi += prevGigi.getWidth();
+                    xAmongGigi += prevTooth.getWidth();
                 }
 
-                gigi.setX(xAmongGigi);
-                gigi.setY(yAmongGigi);
+                tooth.setX(xAmongGigi);
+                tooth.setY(yAmongGigi);
 
-                prevGigi = gigi;
+                prevTooth = tooth;
             }
 
-            prevListGigi = listGigi;
+            prevListTooth = listTooth;
         }
     }
 
-    private void appendWithEmptyIfGapped(List<Gigi> listGigi) {
+    private void appendWithEmptyIfGapped(List<Tooth> listTooth) {
         // Find maxTotalHeight Top & Bottom
         int maxTotalHeightOfListBoxTop = 0;
         int maxTotalHeightOfListBoxBottom = 0;
-        for (Gigi gigi : listGigi) {
-            int totalHeightOfListBoxTop = gigi.totalHeightOfListBoxTop();
+        for (Tooth tooth : listTooth) {
+            int totalHeightOfListBoxTop = tooth.totalHeightOfListBoxTop();
             if (totalHeightOfListBoxTop > maxTotalHeightOfListBoxTop)
                 maxTotalHeightOfListBoxTop = totalHeightOfListBoxTop;
 
-            int totalHeightOfListBoxBottom = gigi.totalHeightOfListBoxBottom();
+            int totalHeightOfListBoxBottom = tooth.totalHeightOfListBoxBottom();
             if (totalHeightOfListBoxBottom > maxTotalHeightOfListBoxBottom)
                 maxTotalHeightOfListBoxBottom = totalHeightOfListBoxBottom;
         }
 
-        for (Gigi gigi : listGigi) {
-            int totalHeightOfListBoxTop = gigi.totalHeightOfListBoxTop();
+        for (Tooth tooth : listTooth) {
+            int totalHeightOfListBoxTop = tooth.totalHeightOfListBoxTop();
             if (totalHeightOfListBoxTop < maxTotalHeightOfListBoxTop) {
-                Box emptyBox = gigi.buildBoxForTop(maxTotalHeightOfListBoxTop - totalHeightOfListBoxTop);
+                Box emptyBox = tooth.buildBoxForTop(maxTotalHeightOfListBoxTop - totalHeightOfListBoxTop);
                 emptyBox.buildThenAddLayer(Empty.class);
-                gigi.prependBoxForTop(emptyBox);
+                tooth.prependBoxForTop(emptyBox);
             }
 
-            int totalHeightOfListBoxBottom = gigi.totalHeightOfListBoxBottom();
+            int totalHeightOfListBoxBottom = tooth.totalHeightOfListBoxBottom();
             if (totalHeightOfListBoxBottom < maxTotalHeightOfListBoxBottom) {
-                Box emptyBox = gigi.buildBoxForBottom(maxTotalHeightOfListBoxBottom - totalHeightOfListBoxBottom);
+                Box emptyBox = tooth.buildBoxForBottom(maxTotalHeightOfListBoxBottom - totalHeightOfListBoxBottom);
                 emptyBox.buildThenAddLayer(Empty.class);
-                gigi.appendBoxForBottom(emptyBox);
+                tooth.appendBoxForBottom(emptyBox);
             }
         }
 
     }
 
-    private int totalWidthOfListGigi(List<Gigi> listGigi) {
+    private int totalWidthOfListGigi(List<Tooth> listTooth) {
         int totalWidth = 0;
-        for (Gigi gigi : listGigi) {
-            totalWidth += gigi.getWidth();
+        for (Tooth tooth : listTooth) {
+            totalWidth += tooth.getWidth();
         }
         return totalWidth;
     }
 
-    private int determineMaxTotalHeightOfListGigi(List<Gigi> listGigi) {
+    private int determineMaxTotalHeightOfListGigi(List<Tooth> listTooth) {
         int maxTotalHeight = 0;
-        for (Gigi gigi : listGigi) {
-            int totalHeight = gigi.totalHeight();
+        for (Tooth tooth : listTooth) {
+            int totalHeight = tooth.totalHeight();
             if (totalHeight > maxTotalHeight) maxTotalHeight = totalHeight;
         }
         return maxTotalHeight;
     }
 
-    private int totalHeightOfCanvas(List<Gigi>... listOfListGigi) {
+    private int totalHeightOfCanvas(List<Tooth>... listOfListGigi) {
         int totalHeight = 0;
-        for (List<Gigi> listGigi : listOfListGigi) {
-            totalHeight += this.determineMaxTotalHeightOfListGigi(listGigi);
+        for (List<Tooth> listTooth : listOfListGigi) {
+            totalHeight += this.determineMaxTotalHeightOfListGigi(listTooth);
         }
         return totalHeight;
     }
 
-    public Gigi getGigi(int nomorGigi) {
+    public Tooth getGigi(int nomorGigi) {
         return container.get(nomorGigi);
     }
 
