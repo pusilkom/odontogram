@@ -1,2 +1,14 @@
 # odontogram
 A Java library to generate odontogram
+
+## Sample Usage
+
+
+
+### Full Example
+
+Source code : [Example.java](https://github.com/pusilkom/odontogram/blob/master/src/main/java/id/ac/ui/pusilkom/Example.java)
+
+![Alt Test](https://lh3.googleusercontent.com/z4L3JrAWqP11AkZxWDvNeXbrEj_pbtUrm7Zp2pStGuYsRVr9qMGPJoCwM7HNrfzXFoeV-O5kfHFeb3sXeMbjuAf-D1dr0t2hVUXRKyfBJsA5VJn_nuso_rejPfpQPjYROnLPjbhtzKtS08eqcuPAU4NpTnjOQ-v_k3ojoW0sLmSA3kUCO5bqcBB4-RMK3Jz9r1IgpWznrxlX45K_423oTkztOesn6OdFa2zCObekz3cKYYzEKOKua8GvOXU7zUIjZ_e4RTPxtIe9jJeFVrQzWTBjOADHpvW7gJOy_jTeFdEjwxoQ6vGqIbBC3KrGpn6C80VaFzmLSgb-SFvvfdg8-CA-iWa5_4ObGdU9Wmk6-6W4qZjbf23r68zFkQptfdbQR1aiugjlN7lK7uaUAQ-_5eVF0bImex10tKP5V44Hr9FLYxkbmG_bcf2sXhF2e4Hkggfq8Yg4FpjRskvNd1H7QG6bl0KIFNXZsRtiuDeepXQaKTtvPG08XqBW_vJ_9e16wpmu6meTZERJupqf09A2WN3pW5xjd8MxxDtZQafekdK2yjgwmq4hblcpL29WA5zh1VEuP9N6oL3qGbk9SqawAefu_IQ0cTG2qjoOW64BShrmU09h5ZOck3_JPracTAPLbUOU8yxGcLmcLlp0-48a61LuYZFcNXePLnMcmbFLpw=w640-h400-no)
+
+### Sample Code
