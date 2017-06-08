@@ -112,7 +112,7 @@ public class Example {
 
         Box boxBottom22 = g22.buildBoxForBottom(Size.HALF_BOX_HEIGHT);
         g22.prependBoxForBottom(boxBottom22);
-        boxBottom22.buildThenAddLayer(Arrow.class).with("CLOCKWISE", StrokeStyle.BASIC);
+        boxBottom22.buildThenAddLayer(Arrow.class).with(ArrowDirection.CLOCKWISE, StrokeStyle.BASIC);
 
         Tooth g23 = odontogram.getTooth(23);
         Box boxCenter23 = g23.buildBoxForTop(Size.BOX_HEIGHT);
@@ -122,7 +122,7 @@ public class Example {
 
         Box boxBottom23 = g23.buildBoxForBottom(Size.HALF_BOX_HEIGHT);
         g23.prependBoxForBottom(boxBottom23);
-        boxBottom23.buildThenAddLayer(Arrow.class).with("COUNTERCLOCKWISE", StrokeStyle.BASIC);
+        boxBottom23.buildThenAddLayer(Arrow.class).with(ArrowDirection.COUNTER_CLOCKWISE, StrokeStyle.BASIC);
 
         Tooth g24 = odontogram.getTooth(24);
         Box boxCenter24 = g24.buildBoxForTop(Size.BOX_HEIGHT);
@@ -429,7 +429,7 @@ public class Example {
         Tooth g31 = odontogram.getTooth(31);
         Box boxTop31 = g31.buildBoxForTop(Size.HALF_BOX_HEIGHT);
         g31.prependBoxForTop(boxTop31);
-        boxTop31.buildThenAddLayer(Arrow.class).with("COUNTERCLOCKWISE", StrokeStyle.BASIC);
+        boxTop31.buildThenAddLayer(Arrow.class).with(ArrowDirection.COUNTER_CLOCKWISE, StrokeStyle.BASIC);
 
         Box boxCenter31 = g31.buildBoxForTop(Size.BOX_HEIGHT);
         g31.replaceBoxForCenter(boxCenter31); // Utk penggantian box center, harus pake replaceBoxForCenter
